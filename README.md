@@ -1,4 +1,4 @@
-# 🛠️ Workshop 3 – Manipulating Components
+# 🛠️ Workshop 3 – Manipulating Components X
 
 This branch corresponds to **Workshop n°3: Manipulating Components** of the module *Application côté client 1* at **ESPRIT School of Engineering**.
 
