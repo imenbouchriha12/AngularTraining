@@ -1,0 +1,114 @@
+/* Container en grille 3 cartes par ligne */
+.cards-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* 3 cards qui remplissent bien l'écran */
+  gap: 20px;
+  padding: 20px;
+}
+
+/* Carte */
+.card {
+  background-color: rgba(39, 39, 42, 0.7); /* transparente */
+  border-radius: 1rem;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+/* Zoom et effet léger au survol */
+.card:hover {
+  transform: scale(1.05);
+  background-color: rgba(39, 39, 42, 0.9);
+}
+
+/* Image */
+.image_container {
+  width: 100%;
+  height: 200px; /* Ajuste la hauteur */
+  overflow: hidden;
+  border-radius: 0.5rem;
+}
+
+.image_container .image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.3s ease;
+}
+
+.card:hover .image {
+  transform: scale(1.1); /* Zoom de l'image au hover */
+}
+
+/* Titres */
+.title span {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #fff;
+  text-transform: capitalize;
+}
+
+/* Infos */
+.size p {
+  color: #fff;
+  margin: 6px 0;
+  line-height: 1.4;
+}
+
+/* Action / bouton */
+.action {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.cart-button {
+  padding: 6px 12px;
+  background-color: #6d28d9;
+  color: #fff;
+  border: none;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.3s ease;
+}
+
+.cart-button:hover {
+  background-color: #4c1d95;
+  transform: scale(1.05);
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .cards-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .cards-container {
+    grid-template-columns: 1fr;
+  }
+}
+.like-container {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+  color: #fff; /* cœur par défaut blanc */
+  font-size: 1rem;
+}
+
+.heart {
+  transition: color 0.3s ease, transform 0.2s ease;
+}
+
+.heart:hover {
+  transform: scale(1.2);
+}
+
+.heart.liked {
+  color: red;
+}
