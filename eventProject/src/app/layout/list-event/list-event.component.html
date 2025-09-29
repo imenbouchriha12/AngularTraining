@@ -1,5 +1,11 @@
+<input
+  type="text"
+  placeholder="Rechercher..."
+  [(ngModel)]="searchText"
+  class="search-input"
+/>
 <div class="cards-container">
-  <div class="card" *ngFor="let e of listEvents">
+  <div class="card" *ngFor="let e of search()">
     <div class="image_container">
       <img [src]="e.imageUrl" [alt]="e.title" class="image" />
     </div>
@@ -19,15 +25,16 @@
     <span>{{ e.price }} DT</span>
   </div>
 
-  <!-- Bouton Read More -->
-  <button class="cart-button">Read more</button>
+<button class="cart-button" [disabled]="e.nbPlaces === 0" (click)="nbPlace(e)">
+  By Ticket
+</button>
 
   <!-- Like -->
   <div class="like-container">
     <svg
       class="heart"
       [class.liked]="e.liked"
-      (click)="toggleLike(e)"
+      (click)="nbLike(e)"
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
       width="24"

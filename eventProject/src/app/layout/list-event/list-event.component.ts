@@ -9,6 +9,7 @@ import { Eventy } from '../../models/eventy';
 export class ListEventComponent implements OnInit {
 
   title:string;
+searchText: string = '';
 
 listEvents:Eventy[];
 
@@ -26,6 +27,8 @@ ngOnInit(): void {
       imageUrl: '/images/Angular.png',
       nbPlaces: 25,
       nbLike: 10,
+      liked:false,
+
 
     },
     {
@@ -39,6 +42,8 @@ ngOnInit(): void {
       imageUrl: '/images/devf.png',
       nbPlaces: 300,
       nbLike: 0,
+      liked:false,
+
 
     },
     {
@@ -52,6 +57,8 @@ ngOnInit(): void {
       imageUrl: '/images/startup.jpg',
       nbPlaces: 100,
       nbLike: 0,
+      liked:true,
+
 
     },
     {
@@ -65,13 +72,13 @@ ngOnInit(): void {
       imageUrl: '/images/ai.jpeg',
       nbPlaces: 150,
       nbLike: 0,
+      liked:false,
 
     }
   ];
-  this.listEvents = this.listEvents.map(e => ({ ...e, liked: false }));
 
 }
-toggleLike(event: any) {
+nbLike(event: any) {
   if (!event.liked) {
     event.nbLike += 1;
     event.liked = true;
@@ -79,6 +86,17 @@ toggleLike(event: any) {
     event.nbLike -= 1;
     event.liked = false;
   }
+}
+
+nbPlace(event: any) {
+    event.nbPlaces--; 
+
+  
+}
+search(): Eventy[] {
+  if (!this.searchText) return this.listEvents; 
+  const text = this.searchText.toLowerCase();
+  return this.listEvents.filter(e => e.title.toLowerCase().includes(text));
 }
 
 }

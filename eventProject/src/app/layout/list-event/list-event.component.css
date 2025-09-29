@@ -1,34 +1,31 @@
 /* Container en grille 3 cartes par ligne */
 .cards-container {
   display: grid;
-  grid-template-columns: repeat(3, 1fr); /* 3 cards qui remplissent bien l'écran */
+  grid-template-columns: repeat(3, 1fr);
   gap: 20px;
   padding: 20px;
 }
 
 /* Carte */
 .card {
-  background-color: rgba(39, 39, 42, 0.3); /* light transparent overlay */
-  backdrop-filter: blur(6px); /* adds a glass-like blur */
+  background-color: transparent; /* fond transparent */
   border-radius: 1rem;
   padding: 1rem;
   display: flex;
   flex-direction: column;
   gap: 0.75rem;
-  transition: transform 0.3s ease, background-color 0.3s ease;
+  transition: transform 0.3s ease;
 }
 
-
-/* Zoom et effet léger au survol */
+/* Zoom au survol */
 .card:hover {
   transform: scale(1.05);
-  background-color: rgba(39, 39, 42, 0.9);
 }
 
 /* Image */
 .image_container {
   width: 100%;
-  height: 200px; /* Ajuste la hauteur */
+  height: 200px;
   overflow: hidden;
   border-radius: 0.5rem;
 }
@@ -42,20 +39,20 @@
 }
 
 .card:hover .image {
-  transform: scale(1.1); /* Zoom de l'image au hover */
+  transform: scale(1.1);
 }
 
 /* Titres */
 .title span {
   font-size: 1.2rem;
   font-weight: 600;
-  color: #fff;
+  color: #000; /* texte noir */
   text-transform: capitalize;
 }
 
 /* Infos */
 .size p {
-  color: #fff;
+  color: #000; /* texte noir */
   margin: 6px 0;
   line-height: 1.4;
 }
@@ -69,8 +66,8 @@
 
 .cart-button {
   padding: 6px 12px;
-  background-color: #6d28d9;
-  color: #fff;
+  background-color: #000; /* bouton noir */
+  color: #fff; /* texte blanc pour contraste */
   border: none;
   border-radius: 0.5rem;
   cursor: pointer;
@@ -78,8 +75,31 @@
 }
 
 .cart-button:hover {
-  background-color: #4c1d95;
+  background-color: #333;
   transform: scale(1.05);
+}
+
+/* Like */
+.like-container {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+  color: #000; /* cœur et texte noir par défaut */
+  font-size: 1rem;
+}
+
+.heart {
+  transition: color 0.3s ease, transform 0.2s ease;
+  color: #000; /* cœur noir */
+}
+
+.heart:hover {
+  transform: scale(1.2);
+}
+
+.heart.liked {
+  color: #000; /* même couleur noire si aimé */
 }
 
 /* Responsive */
@@ -94,23 +114,36 @@
     grid-template-columns: 1fr;
   }
 }
-.like-container {
-  display: flex;
-  align-items: center;
-  gap: 6px;
+.cart-button {
+  padding: 6px 12px;
+  background-color: #1e40af; /* bleu par défaut */
+  color: #fff;
+  border: none;
+  border-radius: 0.5rem;
   cursor: pointer;
-  color: #fff; /* cœur par défaut blanc */
+  transition: background 0.3s ease, transform 0.3s ease;
+}
+
+/* Hover uniquement si le bouton n'est pas désactivé */
+.cart-button:not(:disabled):hover {
+  background-color: #2563eb; /* bleu plus clair au hover */
+  transform: scale(1.05);
+}
+
+/* Bouton désactivé */
+.cart-button:disabled {
+  background-color: #999; /* gris si aucune place */
+  cursor: not-allowed;
+  transform: none;
+}
+.search-input {
+  margin-top: 20px;
+  margin-left: 20px;
+
+  width: 50%;
+  padding: 8px 10px;
+  border-radius: 0.5rem;
+  border: 1px solid #ccc;
+  margin-bottom: 20px;
   font-size: 1rem;
-}
-
-.heart {
-  transition: color 0.3s ease, transform 0.2s ease;
-}
-
-.heart:hover {
-  transform: scale(1.2);
-}
-
-.heart.liked {
-  color: red;
 }
