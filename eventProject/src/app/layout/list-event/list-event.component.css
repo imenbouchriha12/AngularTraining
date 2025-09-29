@@ -8,7 +8,8 @@
 
 /* Carte */
 .card {
-  background-color: rgba(39, 39, 42, 0.7); /* transparente */
+  background-color: rgba(39, 39, 42, 0.3); /* light transparent overlay */
+  backdrop-filter: blur(6px); /* adds a glass-like blur */
   border-radius: 1rem;
   padding: 1rem;
   display: flex;
@@ -16,6 +17,7 @@
   gap: 0.75rem;
   transition: transform 0.3s ease, background-color 0.3s ease;
 }
+
 
 /* Zoom et effet léger au survol */
 .card:hover {
