@@ -69,4 +69,7 @@ export class EventsService {
   getAllEvents(){
     return this.list;
   }
+   getEventById(id:number){
+    return this.list[id];
+  }
 }
