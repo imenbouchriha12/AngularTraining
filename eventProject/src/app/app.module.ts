@@ -7,7 +7,9 @@ import { HeaderComponent } from './layout/header/header.component';
 import { FooterComponent } from './layout/footer/footer.component';
 import { HomeComponent } from './layout/home/home.component';
 import { NotFoundComponent } from './layout/not-found/not-found.component';
-import { DatePersPipe } from './sharedModule/pipes/date-pers.pipe';
+import { DatePersPipe } from './shared-module/pipes/date-pers.pipe';
+import { NgHoverDirective } from './shared-module/directives/ng-hover.directive';
+import { EuroPipe } from './shared-module/pipes/euro.pipe';
 
 @NgModule({
   declarations: [
@@ -16,7 +18,8 @@ import { DatePersPipe } from './sharedModule/pipes/date-pers.pipe';
     FooterComponent,
     HomeComponent,
     NotFoundComponent,
-    DatePersPipe
+    
+
   ],
   imports: [
     BrowserModule,

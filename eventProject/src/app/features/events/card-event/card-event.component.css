@@ -188,3 +188,36 @@
     font-size: 1rem;
   }
 }
+.like-container {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  gap: 8px;
+}
+
+.heart {
+  transition: transform 0.2s ease, fill 0.3s ease;
+  fill: #ccc; /* couleur par défaut */
+}
+
+.heart:hover {
+  transform: scale(1.2);
+}
+
+/* Couleurs dynamiques selon le nombre de likes */
+.low-like {
+  fill: #f0ad4e; /* orange */
+}
+
+.medium-like {
+  fill: #ff6666; /* rouge clair */
+}
+
+.high-like {
+  fill: #e60000; /* rouge foncé */
+}
+
+.like-count {
+  font-weight: bold;
+  font-size: 1.1rem;
+}

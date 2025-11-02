@@ -10,7 +10,7 @@
   </div>
 
   <!-- 🪧 Liste des cartes -->
-  <div class="cards-container">
+  <div class="cards-container" >
     <app-card-event class="card" *ngFor="let event of search()" [e]="event" (notifLike)="nbLike(event)" (nbPlaces)="nbPlace(event)">
     
     </app-card-event>

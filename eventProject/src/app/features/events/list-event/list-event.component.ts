@@ -1,43 +1,44 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Eventy } from '../../../models/eventy';
-import { EventsService } from '../../../sharedModule/data/events.service';
+import { EventsService } from '../../../shared-module/data/events.service';
 
 @Component({
   selector: 'app-list-event',
   templateUrl: './list-event.component.html',
-  styleUrls: ['./list-event.component.css'] 
+  styleUrls: ['./list-event.component.css']
 })
 export class ListEventComponent implements OnInit {
+  @Input() listEvents: Eventy[] = []; // ✅ pour recevoir les filtres du parent
 
-  title:string;
-searchText: string = '';
+  title: string = '';
+  searchText: string = '';
 
-listEvents:Eventy[];
+  constructor(private data: EventsService) {}
 
-constructor(private data:EventsService){}
-ngOnInit(): void {  
-this.listEvents=this.data.getAllEvents();
-
-}
-nbLike(event: any) {
-  if (!event.liked) {
-    event.nbLike += 1;
-    event.liked = true;
-  } else {
-    event.nbLike -= 1;
-    event.liked = false;
+  ngOnInit(): void {
+    // Si pas encore filtré, on affiche tout
+    if (this.listEvents.length === 0) {
+      this.listEvents = this.data.getAllEvents();
+    }
   }
-}
 
-nbPlace(event: any) {
-    event.nbPlaces--; 
+  nbLike(event: Eventy) {
+    if (!event.liked) {
+      event.nbLike++;
+      event.liked = true;
+    } else {
+      event.nbLike--;
+      event.liked = false;
+    }
+  }
 
-  
-}
-search(): Eventy[] {
-  if (!this.searchText) return this.listEvents; 
-  const text = this.searchText.toLowerCase();
-  return this.listEvents.filter(e => e.title.toLowerCase().includes(text));
-}
+  nbPlace(event: Eventy) {
+    event.nbPlaces--;
+  }
 
+  search(): Eventy[] {
+    if (!this.searchText) return this.listEvents;
+    const text = this.searchText.toLowerCase();
+    return this.listEvents.filter(e => e.title.toLowerCase().includes(text));
+  }
 }

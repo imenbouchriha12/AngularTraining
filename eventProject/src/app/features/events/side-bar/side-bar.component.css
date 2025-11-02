@@ -37,3 +37,15 @@ body {
   overflow-x: hidden;
   overflow-y: auto; /* Scrollable contents if viewport is shorter than content. */
 }
+.list-group-item.active {
+  background-color: #007bff;
+  border-color: #007bff;
+}
+
+select.form-select {
+  border-radius: 8px;
+}
+
+button {
+  border-radius: 6px;
+}

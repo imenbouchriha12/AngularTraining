@@ -1,27 +1,52 @@
-<!--Main Navigation-->
-<header>
-  <!-- Sidebar -->
-    <div class="position-sticky">
-      <div class="list-group list-group-flush mx-3 mt-4">
-        <a
-          href="#"
-          class="list-group-item list-group-item-action py-2 ripple"
-          aria-current="true"
-        >
-          <i class="fas fa-tachometer-alt fa-fw me-3"></i><span>Home</span>
-        </a>
-        <a routerLink="/events" class="list-group-item list-group-item-action py-2 ripple active">
-          <i class="fas fa-chart-area fa-fw me-3"></i><span>Evenements</span>
-        </a>
+<!-- Sidebar -->
+<div class="position-sticky">
+  <div class="list-group list-group-flush mx-3 mt-4">
 
+    <!-- Filtres -->
+    <div class="px-2">
+      <h6 class="fw-bold mb-3">Filtres</h6>
+    <hr />
+      <!-- Statut -->
+      <div class="mb-3">
+        <label class="form-label fw-semibold">Disponibilité</label>
+        <select class="form-select" [(ngModel)]="selectedStatus">
+          <option value="">-- Choisir un statut --</option>
+          <option *ngFor="let s of statusList" [value]="s">{{ s }}</option>
+        </select>
+      </div>
+
+      <!-- Localisation -->
+      <div class="mb-3">
+        <label class="form-label fw-semibold">Localisation</label>
+        <select class="form-select" [(ngModel)]="selectedLocation">
+          <option value="">-- Choisir une localisation --</option>
+          <option *ngFor="let l of locations" [value]="l">{{ l }}</option>
+        </select>
+      </div>
+
+      <!-- Prix -->
+      <div class="mb-3">
+        <label class="form-label fw-semibold">Prix</label>
+        <select class="form-select" [(ngModel)]="selectedPrix">
+          <option value="">-- Choisir un prix --</option>
+          <option *ngFor="let p of prixList" [value]="p">{{ p }} DT</option>
+        </select>
+      </div>
+
+      <!-- Date -->
+      <div class="mb-4">
+        <label class="form-label fw-semibold">Date</label>
+        <select class="form-select" [(ngModel)]="selectedDate">
+          <option value="">-- Choisir une date --</option>
+          <option *ngFor="let d of dates" [value]="d">{{ d }}</option>
+        </select>
+      </div>
+
+      <!-- Boutons -->
+      <div class="d-flex justify-content-between">
+        <button class="btn btn-primary btn-sm" (click)="applyFilters()">Appliquer</button>
+        <button class="btn btn-outline-secondary btn-sm" (click)="removeAll()">Réinitialiser</button>
       </div>
     </div>
-  <!-- Sidebar -->
-</header>
-<!--Main Navigation-->
-
-<!--Main layout-->
-<main style="margin-top: 58px;">
-  <div class="container pt-4"></div>
-</main>
-<!--Main layout-->
+  </div>
+</div>

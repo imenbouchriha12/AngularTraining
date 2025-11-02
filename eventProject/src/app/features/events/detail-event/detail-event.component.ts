@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Eventy } from '../../../models/eventy';
 import { ActivatedRoute } from '@angular/router';
-import { EventsService } from '../../../sharedModule/data/events.service';
+import { EventsService } from '../../../shared-module/data/events.service';
 
 @Component({
   selector: 'app-detail-event',
